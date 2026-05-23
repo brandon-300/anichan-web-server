@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AniChan - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "on-primary-fixed-variant": "#6900b3",
+                        "surface-container-high": "#2a2a2c",
+                        "on-background": "#e5e1e4",
+                        "outline": "#988d9f",
+                        "primary": "#ddb7ff",
+                        "secondary": "#5de6ff",
+                        "on-secondary-container": "#00515d",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e1e4",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "secondary-fixed": "#a2eeff",
+                        "on-secondary-fixed": "#001f25",
+                        "secondary-container": "#00cbe6",
+                        "on-primary": "#490080",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface": "#131315",
+                        "surface-container-highest": "#353437",
+                        "primary-container": "#b76dff",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131315",
+                        "on-tertiary-fixed-variant": "#47464b",
+                        "surface-variant": "#353437",
+                        "surface-container-low": "#1c1b1d",
+                        "inverse-primary": "#842bd2",
+                        "on-primary-container": "#400071",
+                        "on-surface": "#e5e1e4",
+                        "surface-tint": "#ddb7ff",
+                        "tertiary-fixed": "#e4e1e7",
+                        "on-error": "#690005",
+                        "outline-variant": "#4d4354",
+                        "inverse-on-surface": "#313032",
+                        "tertiary-fixed-dim": "#c8c5cb",
+                        "on-tertiary-container": "#2a292e",
+                        "on-primary-fixed": "#2c0051",
+                        "primary-fixed": "#f0dbff",
+                        "surface-container-lowest": "#0e0e10",
+                        "tertiary": "#c8c5cb",
+                        "surface-bright": "#39393b",
+                        "on-secondary": "#00363e",
+                        "surface-container": "#201f21",
+                        "tertiary-container": "#929095",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "on-tertiary": "#303034",
+                        "primary-fixed-dim": "#ddb7ff",
+                        "on-surface-variant": "#cfc2d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Lexend"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Lexend"],
+                        "headline-lg-mobile": ["Lexend"],
+                        "headline-xl": ["Lexend"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-nav {
+            background-color: rgba(19, 19, 21, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .input-dark {
+            background-color: #0a0a0c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e1e4;
+            transition: all 0.3s ease;
+        }
+
+        .input-dark:focus {
+            border-color: #5de6ff;
+            box-shadow: 0 0 10px rgba(93, 230, 255, 0.2);
+            outline: none;
+            caret-color: #5de6ff;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ddb7ff 0%, #b76dff 100%);
+            color: #2c0051;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(221, 183, 255, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #5de6ff;
+            color: #5de6ff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(93, 230, 255, 0.1);
+            box-shadow: 0 0 15px rgba(93, 230, 255, 0.2);
+        }
+        
+        .btn-danger {
+            background: transparent;
+            border: 1px solid #ffb4ab;
+            color: #ffb4ab;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger:hover {
+            background: rgba(255, 180, 171, 0.1);
+            box-shadow: 0 0 15px rgba(255, 180, 171, 0.2);
+        }
+
+        /* Ambient glows */
+        .glow-purple { box-shadow: 0 0 20px rgba(221, 183, 255, 0.05); }
+        .glow-cyan { box-shadow: 0 0 20px rgba(93, 230, 255, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col md:flex-row antialiased selection:bg-secondary selection:text-on-secondary-fixed">
+<!-- Mobile Top Bar -->
+<header class="md:hidden glass-nav flex justify-between items-center w-full px-margin-mobile h-16 z-50 fixed top-0 w-full glow-purple">
+<div class="font-headline-md text-headline-md font-extrabold text-primary tracking-tighter">AniChan</div>
+<div class="flex items-center gap-4">
+<button aria-label="Notifications" class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="Mail" class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+</div>
+</header>
+<!-- Desktop Side Nav (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col h-screen left-0 w-64 bg-surface-container-low/90 backdrop-blur-2xl border-r border-outline-variant/10 shadow-xl py-8 gap-4 fixed top-0 z-50">
+<div class="px-6 mb-8">
+<div class="font-headline-xl text-headline-xl font-extrabold text-primary tracking-tighter">AniChan</div>
+</div>
+<div class="flex flex-col w-full">
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">Community</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Messages</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-primary-container/20 text-primary border-r-4 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto px-6">
+<button class="w-full btn-secondary rounded-lg py-3 flex items-center justify-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined">logout</span>
+                Log Out
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 pt-16 md:pt-0 pb-20 md:pb-0 min-h-screen">
+<!-- Profile Header / Cover -->
+<div class="relative w-full h-64 md:h-80 bg-surface-container-high overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="A moody, cyberpunk-inspired digital landscape featuring neon purple and cyan lights reflecting off dark, wet concrete surfaces. The scene is illuminated by glowing holographic signs with Japanese characters, creating a high-energy, nocturnal aesthetic. The lighting is dramatic and contrast-heavy, evoking a premium, futuristic anime social lounge." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJgtuBoUC-orrG4NL6njrHTrTs6DIdlVmnkPnlQHMC-jtmJzWtkch6GCign0NcTpgPmhrg_bzSNggC_5xvAQI3lQQp1DPPHUMI9RkHz1Xk1oxPNhr05HSdZigAuJqSA9fsY5SVRDjFxgfeByj9fxMOsfRGu7joab_txIZ1PID59a9bcEvDZ0hvI_OXr7byQPRg4eMDh-MP4NIAO5j7ib4weRejbQrDGSMbMNDdXyvBPxsGTjfNBJ3002pZnMClSfKjBw4_PxImpRA');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop -mt-24 md:-mt-32 relative z-10">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<!-- Left Column: Avatar & Quick Info -->
+<div class="w-full md:w-1/3 flex flex-col items-center md:items-start gap-4">
+<!-- Avatar -->
+<div class="relative group">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-background overflow-hidden relative shadow-[0_0_30px_rgba(221,183,255,0.3)]">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="A striking portrait of a character with vibrant, electric purple hair styled in a modern, asymmetrical cut. The lighting is cinematic, with neon cyan rim lights highlighting their features against a deep, dark background. The mood is confident and nocturnal, perfectly matching the cyber-anime aesthetic of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTUgKcYaEY4Y-WF-otKSnjUeQyjW61NN_cwrCl4DKPuhWkq-5sTjtHfrEmUCt-reXxvn4hQVbEoy7hDfFB7WfTZv1SfKKn8J6UpdBEY1E-Wx3zyo6OMWuADS6T-sf8HUJqHrsrvxPC_V8MsxTYUiToJKiqmqbhwxydMVIRBfuD5jqMD3GlzixfJ5aO-dfppsLYLI5-Ar1urKCz4YNhtcP7gJZtq87zySVCf1RfqPbFme1tpsIX_fwpqV3E3SJDGdKpMzGDOcu7KX0"/>
+<!-- Edit Avatar Overlay -->
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+</div>
+</div>
+<!-- Presence Indicator -->
+<div class="absolute bottom-2 right-2 md:bottom-6 md:right-6 w-5 h-5 bg-secondary rounded-full border-2 border-background shadow-[0_0_10px_rgba(93,230,255,0.8)]"></div>
+</div>
+<!-- User Identity -->
+<div class="text-center md:text-left w-full">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">NeoTokyo_Rider</h1>
+<p class="font-body-md text-body-md text-primary mt-1">@neorider</p>
+<div class="flex items-center justify-center md:justify-start gap-2 mt-2 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Online Now</span>
+</div>
+</div>
+<!-- Action Buttons (Mobile mostly, visible on desktop too) -->
+<div class="flex flex-wrap gap-3 mt-4 w-full justify-center md:justify-start">
+<button class="btn-primary px-6 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+                            Save Profile
+                        </button>
+</div>
+</div>
+<!-- Right Column: Edit Form -->
+<div class="w-full md:w-2/3 flex flex-col gap-8">
+<!-- Profile Details Card -->
+<div class="glass-panel rounded-xl p-6 md:p-8 w-full">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">person_edit</span>
+                            Profile Details
+                        </h2>
+<form class="flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Display Name</label>
+<input class="input-dark rounded-lg p-3 font-body-md text-body-md w-full" type="text" value="NeoTokyo_Rider"/>
+</div>
+<!-- Username -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Username</label>
+<div class="relative flex items-center w-full">
+<span class="absolute left-3 text-on-surface-variant">@</span>
+<input class="input-dark rounded-lg p-3 pl-8 font-body-md text-body-md w-full" type="text" value="neorider"/>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Email Address</label>
+<input class="input-dark rounded-lg p-3 font-body-md text-body-md w-full" type="email" value="rider@neotokyo.net"/>
+</div>
+<!-- DOB -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Date of Birth</label>
+<input class="input-dark rounded-lg p-3 font-body-md text-body-md w-full" style="color-scheme: dark;" type="date" value="1998-04-15"/>
+</div>
+<!-- Country -->
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Location</label>
+<select class="input-dark rounded-lg p-3 font-body-md text-body-md w-full appearance-none">
+<option selected="" value="JP">Japan</option>
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="KR">South Korea</option>
+</select>
+</div>
+</div>
+</form>
+</div>
+<!-- Preferences Card -->
+<div class="glass-panel rounded-xl p-6 md:p-8 w-full">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">tune</span>
+                            Preferences
+                        </h2>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2 max-w-md">
+<label class="font-label-md text-label-md text-on-surface-variant">Language</label>
+<select class="input-dark rounded-lg p-3 font-body-md text-body-md w-full appearance-none">
+<option selected="" value="en">English (EN)</option>
+<option value="ja">日本語 (JA)</option>
+<option value="zh">中文 (ZH)</option>
+<option value="de">Deutsch (DE)</option>
+<option value="fr">Français (FR)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Danger Zone -->
+<div class="border border-error-container/30 bg-error-container/5 rounded-xl p-6 md:p-8 w-full mb-12">
+<h2 class="font-headline-md text-headline-md text-error mb-2">Danger Zone</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Irreversible actions regarding your account.</p>
+<button class="btn-danger px-6 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 w-full md:w-auto justify-center">
+<span class="material-symbols-outlined">delete_forever</span>
+                            Delete Account
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden glass-nav flex justify-around items-center h-16 pb-safe px-4 fixed bottom-0 left-0 w-full z-50 rounded-t-xl border-t border-outline-variant/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md-mobile text-label-md-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md-mobile text-label-md-mobile">Friends</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-md-mobile text-label-md-mobile">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-secondary after:rounded-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md-mobile text-label-md-mobile">Profile</span>
+</a>
+</nav>
+<!-- Inactivity Script -->
+<script>
+        (function() {
+            let inactivityTime = function () {
+                let time;
+                const timeoutLimit = 15 * 60 * 1000; // 15 minutes
+
+                function logout() {
+                    console.log("Auto-logged out due to inactivity.");
+                    // window.location.href = '/login'; 
+                }
+
+                function resetTimer() {
+                    clearTimeout(time);
+                    time = setTimeout(logout, timeoutLimit);
+                }
+
+                window.onload = resetTimer;
+                document.onmousemove = resetTimer;
+                document.onkeydown = resetTimer;
+                document.ontouchstart = resetTimer;
+                document.onclick = resetTimer;
+            };
+            inactivityTime();
+        })();
+    </script>
+</body></html>
