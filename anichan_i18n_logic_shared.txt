@@ -1,0 +1,42 @@
+/**
+ * AniChan i18n Dictionary
+ * Supports: EN, JA, ZH, DE, FR
+ */
+const translations = {
+  en: {
+    welcome: "Welcome to AniChan",
+    login: "Login",
+    signup: "Sign Up",
+    find_friends: "Find Friends",
+    messages: "Messages",
+    profile: "Profile",
+    currently_airing: "Currently Airing",
+    search_placeholder: "Search anime, users, tags...",
+    logout: "Log Out",
+    save_profile: "Save Profile",
+    presence_online: "Online Now",
+    presence_offline: "Offline",
+    delete_account: "Delete Account"
+  },
+  ja: {
+    welcome: "AniChanへようこそ",
+    login: "ログイン",
+    signup: "サインアップ",
+    find_friends: "友達を探す",
+    messages: "メッセージ",
+    profile: "プロフィール",
+    currently_airing: "現在放送中",
+    search_placeholder: "アニメ、ユーザー、タグを検索...",
+    logout: "ログアウト",
+    save_profile: "プロフィールを保存",
+    presence_online: "オンライン",
+    presence_offline: "オフライン",
+    delete_account: "アカウントを削除"
+  },
+  // ... other languages handled in logic
+};
+
+function initI18n() {
+  const lang = localStorage.getItem('anichan_lang') || navigator.language.slice(0, 2) || 'en';
+  // Logic to apply translations to data-i18n attributes
+}
