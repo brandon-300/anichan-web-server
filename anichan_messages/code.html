@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AniChan - Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lexend:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131315",
+                      "on-primary-fixed-variant": "#6900b3",
+                      "surface-container-high": "#2a2a2c",
+                      "on-background": "#e5e1e4",
+                      "outline": "#988d9f",
+                      "primary": "#ddb7ff",
+                      "secondary": "#5de6ff",
+                      "on-secondary-container": "#00515d",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#e5e1e4",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "secondary-fixed": "#a2eeff",
+                      "on-secondary-fixed": "#001f25",
+                      "secondary-container": "#00cbe6",
+                      "on-primary": "#490080",
+                      "secondary-fixed-dim": "#2fd9f4",
+                      "surface": "#131315",
+                      "surface-container-highest": "#353437",
+                      "primary-container": "#b76dff",
+                      "on-error-container": "#ffdad6",
+                      "background": "#131315",
+                      "on-tertiary-fixed-variant": "#47464b",
+                      "surface-variant": "#353437",
+                      "surface-container-low": "#1c1b1d",
+                      "inverse-primary": "#842bd2",
+                      "on-primary-container": "#400071",
+                      "on-surface": "#e5e1e4",
+                      "surface-tint": "#ddb7ff",
+                      "tertiary-fixed": "#e4e1e7",
+                      "on-error": "#690005",
+                      "outline-variant": "#4d4354",
+                      "inverse-on-surface": "#313032",
+                      "tertiary-fixed-dim": "#c8c5cb",
+                      "on-tertiary-container": "#2a292e",
+                      "on-primary-fixed": "#2c0051",
+                      "primary-fixed": "#f0dbff",
+                      "surface-container-lowest": "#0e0e10",
+                      "tertiary": "#c8c5cb",
+                      "surface-bright": "#39393b",
+                      "on-secondary": "#00363e",
+                      "surface-container": "#201f21",
+                      "tertiary-container": "#929095",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed": "#1b1b1f",
+                      "on-tertiary": "#303034",
+                      "primary-fixed-dim": "#ddb7ff",
+                      "on-surface-variant": "#cfc2d6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Lexend"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Lexend"],
+                      "headline-lg-mobile": ["Lexend"],
+                      "headline-xl": ["Lexend"],
+                      "body-md": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                      "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #0a0a0c; color: #e5e1e4; overflow: hidden; }
+        .glass-panel {
+            background-color: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-primary { box-shadow: 0 0 15px rgba(221, 183, 255, 0.2); }
+        .neon-glow-secondary { box-shadow: 0 0 10px rgba(93, 230, 255, 0.3); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .message-bubble-in { background-color: rgba(42, 42, 44, 0.8); border-radius: 16px 16px 16px 4px; }
+        .message-bubble-out { background: linear-gradient(135deg, rgba(183, 109, 255, 0.9) 0%, rgba(132, 43, 210, 0.9) 100%); border-radius: 16px 16px 4px 16px; box-shadow: 0 4px 15px rgba(183, 109, 255, 0.2); color: white; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col md:flex-row antialiased selection:bg-primary selection:text-on-primary">
+<!-- Desktop SideNav -->
+<nav class="hidden lg:flex flex-col h-full py-8 gap-4 bg-surface-container-low/90 backdrop-blur-2xl docked left-0 w-64 border-r border-outline-variant/10 shadow-xl z-50 flex-shrink-0">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md text-primary font-extrabold tracking-tighter">AniChan</h1>
+</div>
+<div class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">forum</span>
+                Community
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary-container/20 text-primary border-r-4 border-primary hover:translate-x-1 transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                Messages
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+                Moderation
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                Settings
+            </a>
+</div>
+<div class="px-6 mt-auto">
+<button class="w-full py-2 px-4 rounded border border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-colors">Switch to User View</button>
+</div>
+</nav>
+<!-- Main Chat Container -->
+<main class="flex-1 flex flex-col md:flex-row h-full overflow-hidden relative">
+<!-- Conversation List (Sidebar) -->
+<aside class="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col border-r border-outline-variant/10 glass-panel h-full z-20 transition-transform duration-300" id="conv-list">
+<!-- Header & Search -->
+<div class="p-4 border-b border-outline-variant/10">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Messages</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-dim border border-outline-variant/30 rounded-lg py-2 pl-10 pr-4 text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all placeholder:text-on-surface-variant/50" placeholder="Search chats..." type="text"/>
+</div>
+</div>
+<!-- List -->
+<div class="flex-1 overflow-y-auto scrollbar-hide">
+<!-- Active Chat Item -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-high/50 cursor-pointer border-l-2 border-secondary relative group transition-colors">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border border-outline-variant/30" data-alt="A close up portrait of a cyberpunk anime character with glowing neon blue hair and a sleek visor. The background is a blurred futuristic cityscape with rain and neon lights reflecting off wet surfaces. High contrast, moody, detailed digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrPIiVjtfOJ3ZyCn6HD_NAWC9zLNL5V5YS-23byFQjYIGZ_eKMcQvlRBCc61YPbXEfpHWP3vCOTyiI_GyWW3yH0rrr9rjSzE328t1ySdpPVsddJppMZ7tgX9U6ZcRqkAwIHGxnkAB3SAscsdmmMUYMDBGH1Hjev7ek4IVhlk7rxztmyBtItDpn77dGcsXoFahL89xgFf1QrEBktxzjBz9HNnR40hNg4775KHi_NaTYqLWRHCC1CjGcewt-i-AdbPTRMuSG-8UrEnA"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-surface-container-high rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">CyberRonin</h3>
+<span class="font-caption text-caption text-secondary">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm truncate">Are we still raiding the lower levels tonight?</p>
+</div>
+<div class="w-2 h-2 bg-secondary rounded-full absolute right-4 top-1/2 -translate-y-1/2"></div>
+</div>
+<!-- Inactive Chat Item 1 -->
+<div class="flex items-center gap-4 p-4 cursor-pointer hover:bg-surface-container-low transition-colors group">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border border-outline-variant/30 opacity-80" data-alt="A portrait of a mysterious anime hacker character with a hood obscuring their face, sitting in a dimly lit room illuminated only by multiple glowing green and purple monitors. Coding syntax reflects in their glasses. High fidelity anime illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdUPJDbOkf8OTdZAvgQIzmfDUeP2TRrF_OXl8i2oBDWDcH3y0l1i3EMeCaYjjlXT37MUEvXhDB_wprPjsbfVegNgHy5kKHSlAcJXXArQbnurD_iSdxMTAtMHInAWbv1a9t5uUTx7hm8FbOx7MYkQP4ehSeDgqhCusLMh-G09gtMG8l9bQudyp4gFmcSBMup5IGrkgatSQkYfX7g2gmJ4CN3cFgYnJytVNo01p2hZOylOlqtuKJ5ROQVXaJhvAEtEA3RdMDGmuzStU"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-outline-variant border-2 border-surface rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface/80 truncate">NullVoid</h3>
+<span class="font-caption text-caption text-on-surface-variant/60">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/70 text-sm truncate">Sent a data packet.</p>
+</div>
+</div>
+<!-- Inactive Chat Item 2 -->
+<div class="flex items-center gap-4 p-4 cursor-pointer hover:bg-surface-container-low transition-colors group">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border border-outline-variant/30 opacity-80" data-alt="A bright, colorful portrait of a futuristic pop-idol anime character with pink pigtails and a shiny silver jacket, winking at the camera. The background is a vibrant mix of neon pink and cyan abstract shapes. Electric, energetic digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9VGNx1wPDVuTK7pL_gCo-Gt_ZZGgRiQq5cZGIVOHU5Ku_4n3FoWp1XGoRUjSB6mIP3JBsCEzCLwDk8F1fmgarFfkaoiZqkYMxYwque2rWkm2LGnQ5I4_wckf7Df6rw-CURDbaupJ_Mk0kwo34M608ebM0mr0MDstTZL6dXinBf1gjrvcljzDJN0VgwLTHWvwc4aLk10F-oXzD3SIyxpx3hMCMk-Efonj7tPxXV66PndWNFFDsWYr0kN9aQc01kbvtOZNnPC1KNPA"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-yellow-500 border-2 border-surface rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface/80 truncate">NeoIdol_X</h3>
+<span class="font-caption text-caption text-on-surface-variant/60">Mon</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/70 text-sm truncate">Thanks for the support at the concert!</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Active Chat Area -->
+<section class="flex-1 flex flex-col h-full bg-background relative z-10">
+<!-- Mobile TopAppBar Override -->
+<div class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_0_20px_rgba(221,183,255,0.05)]">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-2" onclick="document.getElementById('conv-list').classList.remove('-translate-x-full')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="font-headline-md text-headline-md font-extrabold text-primary tracking-tighter">AniChan</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</div>
+<!-- Chat Header -->
+<header class="h-20 border-b border-outline-variant/10 glass-panel flex items-center justify-between px-6 flex-shrink-0 shadow-sm z-20">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant" onclick="document.getElementById('conv-list').classList.add('-translate-x-full')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="relative">
+<img alt="Partner Avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-surface ring-offset-1 ring-offset-surface-dim" data-alt="A close up portrait of a cyberpunk anime character with glowing neon blue hair and a sleek visor. The background is a blurred futuristic cityscape with rain and neon lights reflecting off wet surfaces. High contrast, moody, detailed digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwYIA52Ux13TsrJ1kfZWie0IyE9Q079smstQUaO7Yro99jWR2YnSgjXddfXEK9sxcFq3x96wjYgs0jyWyCXC2iMp6DFZZESZoMaKAslLctUJS0WGTGRiTUgu2tArBYLGYWxVz5eYfriVUUuhWIGUBH5V3m1UtUNH8FWaBZltZGeC9QSWOM7h3xcJyCpWi9OGEF7l58ErLUt_DpwfNLMw9BovVdVuvMNJD-SNwccxV3LZ_1yDJmJxKgpCEuxJTM1NamkuGneNTd9N8"/>
+<div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base leading-tight">CyberRonin</h2>
+<span class="font-caption text-caption text-secondary">Online</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Messages Scroll Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiLz48L3N2Zz4=')]">
+<!-- Time Separator -->
+<div class="flex justify-center">
+<span class="font-caption text-caption bg-surface-container-high/50 text-on-surface-variant px-3 py-1 rounded-full backdrop-blur-sm">Today, 10:24 AM</span>
+</div>
+<!-- Incoming Message Block -->
+<div class="flex gap-3 max-w-[85%]">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-auto" data-alt="A close up portrait of a cyberpunk anime character with glowing neon blue hair and a sleek visor. The background is a blurred futuristic cityscape with rain and neon lights reflecting off wet surfaces. High contrast, moody, detailed digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIQN1yZ6qlfLZtJMQlD3IKljWfHyswS2s_kZWVC7GZORxrjN2cikAvVTJdreQijwlGg26Rot44Qab8jRxtLW664L5oSDuAw1WucAY9FnpSIDXFw8BIHlAJ-2QrejyfSglo-IXwd3RxcSb2MTnd-muWNZZUpsvDlv97GOrb_wjGTnXFvjVyH6C_-hJGX2gVDBypRBb57l2qw1sgjrNwJCIwE3Xgps2ixPFgN8X6nZnG7_p3UIIVcN5wnBEiZZApBbfBAh8DzbGBZsA"/>
+<div class="flex flex-col gap-1 items-start">
+<div class="message-bubble-in p-3 px-4 shadow-sm border border-outline-variant/10">
+<p class="font-body-md text-body-md text-on-surface">Did you check the new sector map?</p>
+</div>
+<div class="message-bubble-in p-3 px-4 shadow-sm border border-outline-variant/10">
+<p class="font-body-md text-body-md text-on-surface">Looks like they patched the exploit we used last time.</p>
+</div>
+<span class="font-caption text-caption text-on-surface-variant/50 ml-1">10:25 AM</span>
+</div>
+</div>
+<!-- Outgoing Message Block -->
+<div class="flex gap-3 max-w-[85%] ml-auto justify-end">
+<div class="flex flex-col gap-1 items-end">
+<!-- Quoted Reply -->
+<div class="bg-surface-container-high/40 border-l-2 border-primary rounded p-2 mb-1 opacity-70 text-sm max-w-xs cursor-pointer hover:opacity-100 transition-opacity">
+<p class="font-caption text-caption text-primary mb-1">CyberRonin</p>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Looks like they patched the exploit we used last time.</p>
+</div>
+<div class="message-bubble-out p-3 px-4 neon-glow-primary">
+<p class="font-body-md text-body-md">Yeah, I saw. We'll have to find a new route through the maintenance shafts.</p>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-caption text-caption text-on-surface-variant/50">10:30 AM</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">done_all</span>
+</div>
+</div>
+</div>
+<!-- Incoming Message Block (Latest) -->
+<div class="flex gap-3 max-w-[85%]">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-auto" data-alt="A close up portrait of a cyberpunk anime character with glowing neon blue hair and a sleek visor. The background is a blurred futuristic cityscape with rain and neon lights reflecting off wet surfaces. High contrast, moody, detailed digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_lO4VoFokStyjTnLGymLRHcnB0QuAzNpamG2UmZQbxq9BRPkhaHWRoXibqUZtX2hZiuCztSC2RnN6-lMNyWgYLFb_dTaDQKMQ5qkvgdQ-z70Bdzrojy7EgqJ8NPqRzpHQ7usvG00Caq3A7Dz8FzwvRlksXRNzTpWMOgPVsmRzNWoycc_Nnvj3z-C9n5cri5wpzTpql1vivWMQU72P1bGThNNNgU4XcH1NukWzeyYDXIowQxNxZzq1nLm6YdAJR1PwivHUZ2L8QJc"/>
+<div class="flex flex-col gap-1 items-start">
+<div class="message-bubble-in p-3 px-4 shadow-sm border border-outline-variant/10 relative group">
+<p class="font-body-md text-body-md text-on-surface">Are we still raiding the lower levels tonight?</p>
+<div class="absolute -right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
+<button class="text-on-surface-variant hover:text-secondary bg-surface-container-high rounded-full p-1"><span class="material-symbols-outlined text-[16px]">reply</span></button>
+</div>
+</div>
+<div class="flex items-center gap-2 ml-1">
+<span class="font-caption text-caption text-on-surface-variant/50">10:42 AM</span>
+<span class="font-caption text-caption text-on-surface-variant/40 italic">(edited)</span>
+</div>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex gap-3 max-w-[85%] items-end mt-4">
+<img alt="Avatar" class="w-6 h-6 rounded-full object-cover opacity-50" data-alt="A close up portrait of a cyberpunk anime character with glowing neon blue hair and a sleek visor. The background is a blurred futuristic cityscape with rain and neon lights reflecting off wet surfaces. High contrast, moody, detailed digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCX5k0HtyxFzRhAmn7siJ4lBpTagjgYSA5xJ9Fi4lsisGwRqYrMTf1Pwa55-CbGNrQCln6uqFyWiDzwrdG9_dXNu5gMzhYOo1PZsmQfBKUCYku2cw0gyyKiyAlnS6cdpLhii1QrEQ1-KVkx0q2SfoNI7_CmJbhoBH-Yg0mDfVHEAc01T9cx3bVx_ns9Fb9i1w1CYfJJxmJCBF8FFpTwmkNwJ9MYHmCYeYV04W0VXJWY-We7NU_Xrfc6ZAShyhSeow3lP9W1gUhVu4"/>
+<div class="message-bubble-in p-2 px-3 shadow-sm border border-outline-variant/10 flex gap-1 items-center h-8">
+<div class="w-1.5 h-1.5 bg-secondary/60 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+<div class="w-1.5 h-1.5 bg-secondary/60 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+<div class="w-1.5 h-1.5 bg-secondary/60 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-low/90 backdrop-blur-xl border-t border-outline-variant/10 z-20 pb-safe">
+<div class="max-w-4xl mx-auto flex items-end gap-2 bg-surface-dim border border-outline-variant/30 rounded-2xl p-2 focus-within:border-secondary focus-within:neon-glow-secondary transition-all">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined">mood</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-body-md text-on-surface focus:ring-0 resize-none py-2 max-h-32 scrollbar-hide" placeholder="Type a message..." rows="1" style="min-height: 40px;"></textarea>
+<button class="p-2 bg-primary/10 text-primary hover:bg-primary hover:text-on-primary rounded-xl transition-all flex-shrink-0 mb-0.5">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="lg:hidden flex justify-around items-center h-16 pb-safe px-4 bg-surface/80 backdrop-blur-lg fixed bottom-0 left-0 w-full z-50 rounded-t-xl border-t border-outline-variant/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30 scale-110 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md-mobile text-label-md-mobile text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30 scale-110 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md-mobile text-label-md-mobile text-[10px] mt-1">Friends</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-secondary after:rounded-full active:bg-surface-container-highest/30 scale-110 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-md-mobile text-label-md-mobile text-[10px] mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 active:bg-surface-container-highest/30 scale-110 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md-mobile text-label-md-mobile text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Auto-resize textarea
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if(this.value === '') this.style.height = '40px';
+        });
+
+        // Mobile sidebar logic setup (initial state handled by CSS)
+        if(window.innerWidth < 768) {
+            document.getElementById('conv-list').classList.add('absolute', '-translate-x-full');
+        }
+    </script>
+</body></html>
