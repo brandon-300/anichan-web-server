@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recover Account - AniChan</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lexend:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Config (Verbatim from prompt) -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131315",
+                    "on-primary-fixed-variant": "#6900b3",
+                    "surface-container-high": "#2a2a2c",
+                    "on-background": "#e5e1e4",
+                    "outline": "#988d9f",
+                    "primary": "#ddb7ff",
+                    "secondary": "#5de6ff",
+                    "on-secondary-container": "#00515d",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e5e1e4",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "secondary-fixed": "#a2eeff",
+                    "on-secondary-fixed": "#001f25",
+                    "secondary-container": "#00cbe6",
+                    "on-primary": "#490080",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "surface": "#131315",
+                    "surface-container-highest": "#353437",
+                    "primary-container": "#b76dff",
+                    "on-error-container": "#ffdad6",
+                    "background": "#131315",
+                    "on-tertiary-fixed-variant": "#47464b",
+                    "surface-variant": "#353437",
+                    "surface-container-low": "#1c1b1d",
+                    "inverse-primary": "#842bd2",
+                    "on-primary-container": "#400071",
+                    "on-surface": "#e5e1e4",
+                    "surface-tint": "#ddb7ff",
+                    "tertiary-fixed": "#e4e1e7",
+                    "on-error": "#690005",
+                    "outline-variant": "#4d4354",
+                    "inverse-on-surface": "#313032",
+                    "tertiary-fixed-dim": "#c8c5cb",
+                    "on-tertiary-container": "#2a292e",
+                    "on-primary-fixed": "#2c0051",
+                    "primary-fixed": "#f0dbff",
+                    "surface-container-lowest": "#0e0e10",
+                    "tertiary": "#c8c5cb",
+                    "surface-bright": "#39393b",
+                    "on-secondary": "#00363e",
+                    "surface-container": "#201f21",
+                    "tertiary-container": "#929095",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "on-tertiary": "#303034",
+                    "primary-fixed-dim": "#ddb7ff",
+                    "on-surface-variant": "#cfc2d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Lexend"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Lexend"],
+                    "headline-lg-mobile": ["Lexend"],
+                    "headline-xl": ["Lexend"],
+                    "body-md": ["Inter"],
+                    "caption": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom overrides for specific brand effects not easily covered by standard utility classes alone */
+        body {
+            background-color: #0a0a0c; /* Deep brand base */
+            background-image: radial-gradient(circle at 50% -20%, rgba(132, 43, 210, 0.15) 0%, transparent 60%);
+        }
+        
+        .glass-card {
+            background-color: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(12px);
+            /* Top-weighted border simulating overhead light */
+            border-top: 1px solid rgba(221, 183, 255, 0.2);
+            border-left: 1px solid rgba(152, 141, 159, 0.1);
+            border-right: 1px solid rgba(152, 141, 159, 0.1);
+            border-bottom: 1px solid rgba(152, 141, 159, 0.05);
+        }
+
+        .input-glow:focus {
+            box-shadow: 0 0 12px rgba(93, 230, 255, 0.15);
+        }
+
+        .btn-primary-glow:hover {
+            box-shadow: 0 0 20px rgba(183, 109, 255, 0.3);
+        }
+    </style>
+</head>
+<!-- Nav Suppression: As per rules, transactional/auth screens MUST suppress top, bottom, and side nav bars to prioritize canvas. -->
+<body class="min-h-screen text-on-background flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop overflow-hidden relative">
+<!-- Atmospheric Background Image -->
+<div class="absolute inset-0 z-[-1] opacity-40 mix-blend-screen pointer-events-none" data-alt="A dark, abstract digital space featuring subtle, glowing volumetric light rays cutting through a deep obsidian black background. Faint hints of electric purple and neon cyan particle dust float in the air. The mood is mysterious, high-tech, and premium, evoking a nocturnal cyber-anime aesthetic. The lighting is soft and diffused, creating a sense of infinite, immersive digital void without any distinct objects or characters." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_n9PQiWMkpO3uNfi2V39yNFr8JvBXYlHBAzPkJPmvohmiQP681XSpKgDgq95hgyYiWbqOwsBh6CtWzgoPR-zForypHhBtKWeYvGexeMj9sRs6CwgBqcPtny5mVu8S-QzY0CVHCF-htid9pymOJ4BoWy3uPhaYNG2dQ7dBEDAZIF4LTsxGblk2WCaLEPnIGwUGtOGR6b518d4GfJW_KiWxNL6WWG7uErPwWKWqJNBMvn5cLPqprcKdyfdT4YlocN0KF9Y5hAbFCGs'); background-size: cover; background-position: center;">
+</div>
+<!-- Main Auth Container -->
+<main class="w-full max-w-[420px] relative z-10 flex flex-col gap-8">
+<!-- Brand Anchor -->
+<div class="text-center flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl text-primary drop-shadow-[0_0_10px_rgba(221,183,255,0.5)]">animation</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tighter">AniChan</h1>
+</div>
+<!-- Glassmorphic Card -->
+<div class="glass-card rounded-xl p-8 shadow-2xl relative overflow-hidden group">
+<!-- Subtle accent glow inside card -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<!-- Step 1: Forgot Password Form -->
+<div class="flex flex-col gap-6 transition-all duration-500 opacity-100 transform translate-x-0" id="step-forgot">
+<div class="flex flex-col gap-2">
+<h2 class="font-headline-md text-headline-md text-primary">Recover Signal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your linked email or username to restore access to the network.</p>
+</div>
+<form class="flex flex-col gap-4" id="form-forgot" onsubmit="event.preventDefault(); initiateRecovery();">
+<div class="flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="recovery-id">Identifier</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">badge</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg py-3 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/50 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary caret-secondary input-glow transition-all" id="recovery-id" placeholder="Email or Username" required="" type="text"/>
+</div>
+</div>
+<!-- Feedback Area -->
+<div class="hidden font-caption text-caption p-3 rounded-lg border border-secondary/20 bg-secondary/10 text-secondary flex items-start gap-2" id="feedback-msg">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>If an account exists, a recovery link has been dispatched to your secure channel.</span>
+</div>
+<button class="w-full mt-2 py-3 px-6 rounded-lg bg-gradient-to-r from-primary to-[#b76dff] text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider transition-all duration-300 btn-primary-glow flex justify-center items-center gap-2" type="submit">
+<span>Send Uplink</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+</div>
+<!-- Step 2: Reset Password Form (Hidden Initially) -->
+<div class="hidden flex-col gap-6 transition-all duration-500 opacity-0 transform translate-x-8 absolute top-8 left-8 right-8" id="step-reset">
+<div class="flex flex-col gap-2">
+<h2 class="font-headline-md text-headline-md text-secondary">Establish New Key</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Signal verified. Configure your new access credentials below.</p>
+</div>
+<form class="flex flex-col gap-4" id="form-reset" onsubmit="event.preventDefault(); confirmReset();">
+<div class="flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="new-pass">New Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">key</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg py-3 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/50 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary caret-secondary input-glow transition-all" id="new-pass" minlength="8" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<button class="w-full mt-2 py-3 px-6 rounded-lg bg-gradient-to-r from-secondary-container to-secondary text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider transition-all duration-300 hover:shadow-[0_0_20px_rgba(93,230,255,0.3)] flex justify-center items-center gap-2" type="submit">
+<span>Initialize Protocol</span>
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+</form>
+</div>
+</div>
+<!-- Navigation Action -->
+<div class="text-center">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-outline-variant hover:text-primary transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Return to Login Point
+            </a>
+</div>
+</main>
+<!-- Client-side logic for demonstration of the flow -->
+<script>
+        function initiateRecovery() {
+            const btn = document.querySelector('#form-forgot button');
+            const btnText = btn.querySelector('span:first-child');
+            const icon = btn.querySelector('span:last-child');
+            const feedback = document.getElementById('feedback-msg');
+            
+            // Simulate network request
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btnText.textContent = 'Processing...';
+            icon.textContent = 'sync';
+            icon.classList.add('animate-spin');
+
+            setTimeout(() => {
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btnText.textContent = 'Simulate Reset Flow'; // Changing for demo purposes to allow user to see step 2
+                icon.textContent = 'arrow_forward';
+                icon.classList.remove('animate-spin');
+                feedback.classList.remove('hidden');
+
+                // Overriding form submit to jump to step 2 for the prototype
+                document.getElementById('form-forgot').onsubmit = (e) => {
+                    e.preventDefault();
+                    transitionToReset();
+                };
+            }, 1500);
+        }
+
+        function transitionToReset() {
+            const stepForgot = document.getElementById('step-forgot');
+            const stepReset = document.getElementById('step-reset');
+
+            // Fade out step 1
+            stepForgot.classList.remove('opacity-100', 'translate-x-0');
+            stepForgot.classList.add('opacity-0', '-translate-x-8');
+
+            setTimeout(() => {
+                stepForgot.classList.add('hidden');
+                stepReset.classList.remove('hidden');
+                
+                // Force reflow
+                void stepReset.offsetWidth;
+                
+                // Fade in step 2
+                stepReset.classList.remove('opacity-0', 'translate-x-8');
+                stepReset.classList.add('opacity-100', 'translate-x-0', 'relative');
+                stepReset.classList.remove('absolute'); // Adjust positioning after transition
+            }, 300);
+        }
+
+        function confirmReset() {
+            const btn = document.querySelector('#form-reset button');
+            const btnText = btn.querySelector('span:first-child');
+            const icon = btn.querySelector('span:last-child');
+
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btnText.textContent = 'Verifying...';
+            icon.textContent = 'sync';
+            icon.classList.add('animate-spin');
+
+            setTimeout(() => {
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btn.classList.remove('from-secondary-container', 'to-secondary', 'text-on-secondary-fixed');
+                btn.classList.add('bg-surface-bright', 'text-primary', 'border', 'border-primary/50');
+                btnText.textContent = 'Protocol Active (Redirecting)';
+                icon.textContent = 'check_circle';
+                icon.classList.remove('animate-spin');
+                icon.classList.add('text-primary');
+            }, 1500);
+        }
+    </script>
+</body></html>
